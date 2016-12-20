@@ -64,8 +64,8 @@
       <HintPath>..\..\packages\Xb.Core.1.0.6\lib\net45\Xb.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xb.Db, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xb.Db.1.0.0\lib\net451\Xb.Db.dll</HintPath>
+    <Reference Include="Xb.Db, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xb.Db.1.0.1\lib\net451\Xb.Db.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

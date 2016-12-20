@@ -138,19 +138,19 @@ namespace Xb.Db
             sql.AppendFormat(" SELECT ");
             //sql.AppendFormat("      UCASE(TABLE_NAME) AS TABLE_NAME ");
             sql.AppendFormat("      TABLE_NAME AS TABLE_NAME ");
-            sql.AppendFormat("     ,ORDINAL_POSITION AS COLUMN_INDEX ");
+            sql.AppendFormat("     ,CAST(ORDINAL_POSITION AS SIGNED INTEGER) AS COLUMN_INDEX ");
             sql.AppendFormat("     ,COLUMN_NAME AS COLUMN_NAME ");
             sql.AppendFormat("     ,DATA_TYPE AS 'TYPE' ");
-            sql.AppendFormat("     ,CHARACTER_MAXIMUM_LENGTH AS CHAR_LENGTH ");
-            sql.AppendFormat("     ,NUMERIC_PRECISION AS NUM_PREC ");
+            sql.AppendFormat("     ,CAST(COALESCE(CHARACTER_MAXIMUM_LENGTH, -1) AS SIGNED INTEGER) AS CHAR_LENGTH ");
+            sql.AppendFormat("     ,CAST(COALESCE(NUMERIC_PRECISION, -1) AS SIGNED INTEGER) AS NUM_PREC ");
             sql.AppendFormat("     ,CASE ");
-            sql.AppendFormat("         WHEN NUMERIC_SCALE IS NOT NULL THEN NUMERIC_SCALE ");
+            sql.AppendFormat("         WHEN NUMERIC_SCALE IS NOT NULL THEN CAST(NUMERIC_SCALE AS SIGNED INTEGER) ");
             sql.AppendFormat("         WHEN NUMERIC_PRECISION IS NOT NULL THEN 0 ");
-            sql.AppendFormat("         ELSE NULL ");
+            sql.AppendFormat("         ELSE -1 ");
             sql.AppendFormat("      END AS NUM_SCALE ");
             sql.AppendFormat("     ,CASE WHEN COLUMN_KEY = 'PRI' THEN 1 ELSE 0 END AS IS_PRIMARY_KEY ");
             sql.AppendFormat("     ,CASE WHEN IS_NULLABLE = 'YES' THEN 1 ELSE 0 END AS IS_NULLABLE ");
-            sql.AppendFormat("     ,COLUMN_COMMENT AS COMMENT ");
+            sql.AppendFormat("     ,COALESCE(COLUMN_COMMENT, '') AS COMMENT ");
             sql.AppendFormat(" FROM ");
             sql.AppendFormat("     information_schema.COLUMNS ");
             sql.AppendFormat(" WHERE ");
@@ -158,7 +158,7 @@ namespace Xb.Db
             sql.AppendFormat(" ORDER BY ");
             sql.AppendFormat("      TABLE_NAME ASC ");
             sql.AppendFormat("     ,ORDINAL_POSITION ASC ");
-            this.StructureTable = this.Query(sql.ToString());
+            this.StructureTable = this.Query<Xb.Db.DbBase.Structure>(sql.ToString());
         }
 
 
