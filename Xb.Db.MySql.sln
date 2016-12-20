@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xb.Db.MySql", "Xb.Db.MySql\Xb.Db.MySql.csproj", "{81094FDF-6A8C-4A96-B72A-191DD25C341D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xb.Db.MySql.STD1.3", "Xb.Db.MySql.STD1.3\Xb.Db.MySql.STD1.3.csproj", "{C17F4789-6279-45CB-9F92-FC256542462C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xb.Db.MySql.FW4.5.1", "Xb.Db.MySql.FW4.5.1\Xb.Db.MySql.FW4.5.1.csproj", "{1CC667AE-6FC9-4AF6-A5DE-A60689443445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXb.Db.MySql", "TestXb.Db.MySql\TestXb.Db.MySql.csproj", "{ABC0EBC2-6873-48F9-AA6A-EEB78FE19A42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{81094FDF-6A8C-4A96-B72A-191DD25C341D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81094FDF-6A8C-4A96-B72A-191DD25C341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81094FDF-6A8C-4A96-B72A-191DD25C341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81094FDF-6A8C-4A96-B72A-191DD25C341D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17F4789-6279-45CB-9F92-FC256542462C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17F4789-6279-45CB-9F92-FC256542462C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17F4789-6279-45CB-9F92-FC256542462C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17F4789-6279-45CB-9F92-FC256542462C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC667AE-6FC9-4AF6-A5DE-A60689443445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC667AE-6FC9-4AF6-A5DE-A60689443445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC667AE-6FC9-4AF6-A5DE-A60689443445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC667AE-6FC9-4AF6-A5DE-A60689443445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC0EBC2-6873-48F9-AA6A-EEB78FE19A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC0EBC2-6873-48F9-AA6A-EEB78FE19A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC0EBC2-6873-48F9-AA6A-EEB78FE19A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC0EBC2-6873-48F9-AA6A-EEB78FE19A42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
