@@ -42,12 +42,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xb\Db\MySql.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Xb.Db\Xb.Db.STD1.3\Xb.Db.STD1.3.csproj">
-      <Project>{e934d179-93cc-4890-86f6-2827d2d5cd61}</Project>
-      <Name>Xb.Db.STD1.3</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
