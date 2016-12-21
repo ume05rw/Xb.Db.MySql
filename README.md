@@ -13,6 +13,7 @@ Supports .NET4.5.1, .NET Standard1.3
 
 ## Requirement
 [System.Data.Common](https://www.nuget.org/packages/System.Data.Common/)  
+[Async MySQL Connector](https://www.nuget.org/packages/MySqlConnector/)  
 [Xb.Core](https://www.nuget.org/packages/Xb.Core/)  
 [Xb.Db](https://www.nuget.org/packages/Xb.Db/)
 
