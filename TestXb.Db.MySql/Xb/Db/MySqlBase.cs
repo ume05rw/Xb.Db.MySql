@@ -9,6 +9,9 @@ namespace TestXb.Db
 {
     public class MySqlBase : TestXb.TestBase, IDisposable
     {
+        protected Xb.Db.MySql _dbDirect;
+        protected Xb.Db.MySql _dbRef;
+
         protected const string Server = "localhost";
         protected const string UserId = "root";
         protected const string Password = "password";
@@ -16,7 +19,7 @@ namespace TestXb.Db
         protected const string NameTarget = "MySqlTests";
         protected MySqlConnection Connection;
 
-        public MySqlBase()
+        public MySqlBase(bool isBuildModel)
         {
             this.Out("MySqlBase.Constructor Start.");
 
@@ -42,9 +45,6 @@ namespace TestXb.Db
             this.Exec(sql);
             this.Exec($"USE {NameTarget}");
 
-            var insertTpl = "INSERT INTO {0} (COL_STR, COL_DEC, COL_INT, COL_DATETIME) VALUES ({1}, {2}, {3}, {4});";
-
-
             sql = " CREATE TABLE test ( "
                 + "     COL_STR VARCHAR(10) NOT NULL, "
                 + "     COL_DEC DECIMAL(5,3), "
@@ -52,12 +52,6 @@ namespace TestXb.Db
                 + "     COL_DATETIME DATETIME "
                 + " ) ENGINE = InnoDB; ";
             this.Exec(sql);
-            this.Exec(string.Format(insertTpl, "test", "'ABC'", 1, 1, "'2001-01-01'"));
-            this.Exec(string.Format(insertTpl, "test", "'ABC'", 1, 1, "'2001-01-01'"));
-            this.Exec(string.Format(insertTpl, "test", "'ABC'", 1, 1, "'2001-01-01'"));
-            this.Exec(string.Format(insertTpl, "test", "'BB'", 12.345, 12345, "'2016-12-13'"));
-            this.Exec(string.Format(insertTpl, "test", "'CC'", 12.345, 12345, "'2016-12-13'"));
-            this.Exec(string.Format(insertTpl, "test", "'KEY'", 0, "NULL", "'2000-12-31'"));
 
             sql = " CREATE TABLE test2 ( "
                 + "     COL_STR VARCHAR(10) NOT NULL, "
@@ -67,10 +61,6 @@ namespace TestXb.Db
                 + "     PRIMARY KEY (COL_STR) "
                 + " ) ENGINE = InnoDB; ";
             this.Exec(sql);
-            this.Exec(string.Format(insertTpl, "test2", "'ABC'", 1, 1, "'2001-01-01'"));
-            this.Exec(string.Format(insertTpl, "test2", "'BB'", 12.345, 12345, "'2016-12-13'"));
-            this.Exec(string.Format(insertTpl, "test2", "'CC'", 12.345, 12345, "'2016-12-13'"));
-            this.Exec(string.Format(insertTpl, "test2", "'KEY'", 0, "NULL", "'2000-12-31'"));
 
             sql = " CREATE TABLE test3 ( "
                 + "     COL_STR VARCHAR(10) NOT NULL, "
@@ -80,14 +70,59 @@ namespace TestXb.Db
                 + "     PRIMARY KEY (COL_STR, COL_INT) "
                 + " ) ENGINE = InnoDB; ";
             this.Exec(sql);
+
+            this.InitTables();
+
+            try
+            {
+                this._dbDirect = new Xb.Db.MySql(MySqlBase.NameTarget
+                                               , MySqlBase.UserId
+                                               , MySqlBase.Password
+                                               , MySqlBase.Server
+                                               , ""
+                                               , isBuildModel);
+
+                this._dbRef = new Xb.Db.MySql(this.Connection
+                                            , NameTarget
+                                            , isBuildModel);
+            }
+            catch (Exception ex)
+            {
+                Xb.Util.Out(ex);
+                throw ex;
+            }
+
+            this.Out("MySqlBase.Constructor End.");
+        }
+
+        protected void InitTables(bool isSetData = true)
+        {
+            this.Exec("TRUNCATE TABLE test");
+            this.Exec("TRUNCATE TABLE test2");
+            this.Exec("TRUNCATE TABLE test3");
+
+            if (!isSetData)
+                return;
+
+            var insertTpl = "INSERT INTO {0} (COL_STR, COL_DEC, COL_INT, COL_DATETIME) VALUES ({1}, {2}, {3}, {4});";
+            this.Exec(string.Format(insertTpl, "test", "'ABC'", 1, 1, "'2001-01-01'"));
+            this.Exec(string.Format(insertTpl, "test", "'ABC'", 1, 1, "'2001-01-01'"));
+            this.Exec(string.Format(insertTpl, "test", "'ABC'", 1, 1, "'2001-01-01'"));
+            this.Exec(string.Format(insertTpl, "test", "'BB'", 12.345, 12345, "'2016-12-13'"));
+            this.Exec(string.Format(insertTpl, "test", "'CC'", 12.345, 12345, "'2016-12-13'"));
+            this.Exec(string.Format(insertTpl, "test", "'KEY'", 0, "NULL", "'2000-12-31'"));
+
+            this.Exec(string.Format(insertTpl, "test2", "'ABC'", 1, 1, "'2001-01-01'"));
+            this.Exec(string.Format(insertTpl, "test2", "'BB'", 12.345, 12345, "'2016-12-13'"));
+            this.Exec(string.Format(insertTpl, "test2", "'CC'", 12.345, 12345, "'2016-12-13'"));
+            this.Exec(string.Format(insertTpl, "test2", "'KEY'", 0, "NULL", "'2000-12-31'"));
+
             this.Exec(string.Format(insertTpl, "test3", "'ABC'", 1, 1, "'2001-01-01'"));
             this.Exec(string.Format(insertTpl, "test3", "'ABC'", 1, 2, "'2001-01-01'"));
             this.Exec(string.Format(insertTpl, "test3", "'ABC'", 1, 3, "'2001-01-01'"));
             this.Exec(string.Format(insertTpl, "test3", "'BB'", 12.345, 12345, "'2016-12-13'"));
             this.Exec(string.Format(insertTpl, "test3", "'CC'", 12.345, 12345, "'2016-12-13'"));
             this.Exec(string.Format(insertTpl, "test3", "'KEY'", "NULL", 0, "'2000-12-31'"));
-
-            this.Out("MySqlBase.Constructor End.");
         }
 
         protected int Exec(string sql)
@@ -99,19 +134,12 @@ namespace TestXb.Db
             return result;
         }
 
-        //protected DataTable Query(string sql)
-        //{
-        //    var adapter = new MySqlDataAdapter(sql, this.Connection);
-        //    var result = new DataTable();
-        //    adapter.Fill(result);
-        //    adapter.Dispose();
-
-        //    return result;
-        //}
-
         public override void Dispose()
         {
             this.Out("MySqlBase.Dispose Start.");
+
+            this._dbDirect.Dispose();
+            this._dbRef.Dispose();
 
             this.Connection.Close();
             this.Connection.Dispose();

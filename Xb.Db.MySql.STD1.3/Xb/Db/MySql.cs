@@ -52,7 +52,6 @@ namespace Xb.Db
         /// コンストラクタ
         /// </summary>
         /// <param name="connection"></param>
-        /// <param name="name"></param>
         /// <param name="isBuildModels"></param>
         /// <param name="encoding"></param>
         /// <remarks></remarks>
@@ -120,6 +119,9 @@ namespace Xb.Db
 
         protected override void GetStructure()
         {
+            if(string.IsNullOrEmpty(this.Name))
+                throw new InvalidOperationException("Xb.Db.MySql.GetStructure:  Schema-Name required for model-building.");
+
             //get Table list
             var sql = new System.Text.StringBuilder();
             sql.AppendFormat(" SELECT ");
