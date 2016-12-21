@@ -28,7 +28,7 @@ Namespace and Methods are...
 
     ・Xb.Db
          |
-         +- .DbBase(Instance)
+         +- .MySql(Instance)
          |    |
          |    +- .Constructor(string name,
          |    |               string user = "sa",
