@@ -67,10 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Xb.Db.MySql.STD1.3\Properties\AssemblyInfo.cs">
+    <Compile Include="..\Xb.Db.MySql.STD1.6\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Xb.Db.MySql.STD1.3\Xb\Db\MySql.cs">
+    <Compile Include="..\Xb.Db.MySql.STD1.6\Xb\Db\MySql.cs">
       <Link>Xb\Db\MySql.cs</Link>
     </Compile>
   </ItemGroup>
