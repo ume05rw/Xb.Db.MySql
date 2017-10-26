@@ -2,9 +2,9 @@
   "supports": {},
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-    "MySql.Data": "8.0.9-dmr",
-    "NETStandard.Library": "1.6.0",
-    "System.Data.Common": "4.1.0",
+    "MySql.Data": "6.10.4",
+    "NETStandard.Library": "1.6.1",
+    "System.Data.Common": "4.3.0",
     "Xb.Core": "1.0.13",
     "Xb.Db": "1.1.0-beta"
   },
