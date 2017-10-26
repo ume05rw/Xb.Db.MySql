@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xb.Db.MySql.STD1.3", "Xb.Db.MySql.STD1.3\Xb.Db.MySql.STD1.3.csproj", "{C17F4789-6279-45CB-9F92-FC256542462C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xb.Db.MySql.STD1.6", "Xb.Db.MySql.STD1.3\Xb.Db.MySql.STD1.6.csproj", "{C17F4789-6279-45CB-9F92-FC256542462C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xb.Db.MySql.FW4.5.1", "Xb.Db.MySql.FW4.5.1\Xb.Db.MySql.FW4.5.1.csproj", "{1CC667AE-6FC9-4AF6-A5DE-A60689443445}"
 EndProject
