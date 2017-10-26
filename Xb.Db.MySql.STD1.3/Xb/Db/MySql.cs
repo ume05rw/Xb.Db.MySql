@@ -52,6 +52,7 @@ namespace Xb.Db
         /// コンストラクタ
         /// </summary>
         /// <param name="connection"></param>
+        /// <param name="name"></param>
         /// <param name="isBuildModels"></param>
         /// <param name="encoding"></param>
         /// <remarks></remarks>
@@ -169,6 +170,7 @@ namespace Xb.Db
         /// 文字列項目のクォートラップ処理
         /// </summary>
         /// <param name="text"></param>
+        /// <param name="likeMarkPos"></param>
         /// <returns></returns>
         public override string Quote(string text
                                    , LikeMarkPosition likeMarkPos = LikeMarkPosition.None)

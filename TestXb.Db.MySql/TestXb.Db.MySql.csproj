@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestXb</RootNamespace>
     <AssemblyName>TestXb.Db.MySql</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -94,9 +94,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Xb.Db.MySql.STD1.3\Xb.Db.MySql.STD1.3.csproj">
-      <Project>{c17f4789-6279-45cb-9f92-fc256542462c}</Project>
-      <Name>Xb.Db.MySql.STD1.3</Name>
+    <ProjectReference Include="..\Xb.Db.MySql.FW4.5.1\Xb.Db.MySql.FW4.5.1.csproj">
+      <Project>{1cc667ae-6fc9-4af6-a5de-a60689443445}</Project>
+      <Name>Xb.Db.MySql.FW4.5.1</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
